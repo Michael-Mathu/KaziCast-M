@@ -1,4 +1,4 @@
-# Unparalleled Hermits Casting & Aggregator Platform 🎬
+# KaziCast Casting & Aggregator Platform 🎬
 
 A scalable, dual-sided casting and aggregation market built exclusively for the East African film industry.
 
