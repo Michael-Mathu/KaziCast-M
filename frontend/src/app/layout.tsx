@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Syne } from 'next/font/google'
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-sans',
+})
 
 export const metadata: Metadata = {
-  title: "KaziCast | Casting & Aggregator",
-  description: "A scalable, dual-sided casting and aggregation market built exclusively for the East African film industry.",
+  title: "KaziCast | The Infrastructure for East African Film",
+  description: "East Africa's premier platform for talent discovery and production infrastructure. Built for actors, models, and directors.",
 };
 
 export default function RootLayout({
@@ -27,14 +28,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${syne.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-black text-white font-sans">
-        <Header />
-        <main className="flex-1 flex flex-col">
-          {children}
-        </main>
-        <Footer />
+      <body className="min-h-full bg-[#080808] text-[#F7F4EF] font-sans selection:bg-[#C8A97E] selection:text-black">
+        {children}
       </body>
     </html>
   );
