@@ -3,16 +3,16 @@
 This document provides a comprehensive overview of the **KaziCast Landing Page MVP**, summarizing the work completed for the pre-funding demo phase.
 
 ## Project Overview
-**KaziCast** is a premium, high-performance landing page designed to communicate the product vision for an East African film casting platform and capture waitlist sign-ups. The current scope focuses on visual credibility and lead generation with zero backend requirements.
+**KaziCast** is a premium, high-performance landing page designed to communicate the product vision for an East African film casting platform. It is currently built as a standalone Next.js application at the root level for maximum deployment simplicity and SEO performance.
 
 ---
 
 ## Technical Stack
 - **Frontend**: Next.js (App Router) with Tailwind CSS v4.
+- **Project Structure**: Standard flat repository (Root-level `package.json`).
 - **Design System**: Strict monochrome (Black & White) with a film-amber accent (`#C8A97E`).
 - **Typography**: `Cormorant Garamond` (Serif/Display) and `Syne` (Sans/UI).
-- **Icons**: Phosphor Icons (via `lucide-react` or SVG).
-- **Form Capture**: Client-side logic ready for Google Forms POST integration.
+- **Form Capture**: Client-side logic integrated for Google Forms POST submission.
 
 ---
 
@@ -32,28 +32,28 @@ This document provides a comprehensive overview of the **KaziCast Landing Page M
 
 ---
 
-## Next Steps (Post-Funding)
+## Development & Deployment
 
-### 1. Platform Infrastructure
-- Initialize the NestJS backend monorepo.
-- Configure PostgreSQL/Prisma for talent and casting schemas.
+### Local Development
+```bash
+npm run dev
+```
 
-### 2. Authentication & Profiles
-- Implement Auth.js for secure onboarding.
-- Build the profile builder for talent to upload headshots and showreels.
-
-### 3. Casting Directory
-- Transition the static landing page components into dynamic dashboards.
+### Deployment Strategy
+The project is optimized for **Vercel**. 
+- **Root Directory**: Should be set to `./` (Default).
+- **Framework**: Next.js (Detected automatically).
 
 ---
 
-## Development Commands
+## Future Roadmap (Post-Funding)
 
-### Start Landing Page
-```bash
-cd frontend
-npm run dev
-```
+### 1. Platform Expansion
+- Re-introduce the `backend` monorepo structure.
+- Configure PostgreSQL/Prisma for talent and casting schemas.
+
+### 2. Authentication
+- Implement Auth.js for secure onboarding.
 
 ---
 
