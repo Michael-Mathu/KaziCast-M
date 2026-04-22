@@ -1,6 +1,5 @@
 import Nav from "@/components/landing/Nav";
 import Hero from "@/components/landing/Hero";
-import MarqueeStrip from "@/components/landing/MarqueeStrip";
 import ProblemSection from "@/components/landing/ProblemSection";
 import DualSplit from "@/components/landing/DualSplit";
 import HowItWorks from "@/components/landing/HowItWorks";
