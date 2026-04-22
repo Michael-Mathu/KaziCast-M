@@ -1,48 +1,36 @@
-# KaziCast Casting & Aggregator Platform 🎬
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A scalable, dual-sided casting and aggregation market built exclusively for the East African film industry.
+## Getting Started
 
-## Tech Stack Overview
-In order to comply with the project requirement of an enterprise-grade infrastructure utilizing exclusively **zero-budget** tiers for deployment, development, and testing, the stack employs the following structure:
+First, run the development server:
 
-### Frontend: Next.js (App Router)
-- **Framework**: Next.js (React)
-- **Styling**: Tailwind CSS
-- **Authentication**: NextAuth.js (Auth.js) - *Free, decoupled, runs on our own database*
-- **Hosting**: Vercel - *Free Hobby Tier (Serverless compute, edge network)*
-
-### Backend: NestJS
-- **Framework**: Node.js via NestJS
-- **ORM**: Prisma
-- **Hosting**: Render / Railway - *Free Tiers (Dockerized web service container spinning down during inactivity)*
-
-### Database: PostgreSQL
-- **Database Engine**: PostgreSQL
-- **Hosting Provider**: Neon.tech / Supabase - *Free Tier (Generous compute and pooled database connections ideal for Prisma and Serverless)*
-
-### Media Storage
-- AWS S3 or Cloudflare R2 - *Cloudflare R2 provides a generous free tier for bandwidth, avoiding AWS egress costs for media-heavy headshots/showreels.*
-
-## Development Guide
-
-### 1. Frontend Setup
 ```bash
-cd frontend
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
-Navigate to `http://localhost:3000`. The interface utilizes strict white/black monochrome styling per standard development constraints.
 
-### 2. Backend Setup
-```bash
-cd backend
-npm run start:dev
-```
-The Nest API currently runs on `http://localhost:3000` (or `3001` to avoid collision).
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Prisma Initialization
-Configure your Neon/Supabase URL into `backend/.env`.
-```bash
-cd backend
-npx prisma db push
-npx prisma generate
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

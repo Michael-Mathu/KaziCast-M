@@ -1,76 +1,60 @@
-# KaziCast Project Handoff 🎬
+# KaziCast Project Handoff 🎬 — MVP Edition
 
-This document provides a comprehensive overview of the **KaziCast** platform, summarizing the work completed and outlining the current state of the project.
+This document provides a comprehensive overview of the **KaziCast Landing Page MVP**, summarizing the work completed for the pre-funding demo phase.
 
 ## Project Overview
-**KaziCast** is a scalable, dual-sided casting and aggregation market built exclusively for the East African film industry. The platform connects visionary directors with exceptional talent through a premium, high-performance web interface.
+**KaziCast** is a premium, high-performance landing page designed to communicate the product vision for an East African film casting platform and capture waitlist sign-ups. The current scope focuses on visual credibility and lead generation with zero backend requirements.
 
 ---
 
 ## Technical Stack
 - **Frontend**: Next.js (App Router) with Tailwind CSS v4.
-- **Backend**: NestJS (Monorepo structure).
-- **ORM**: Prisma.
-- **Database**: PostgreSQL (Designed for Neon.tech / Supabase).
-- **Architecture**: Strict monochrome design (Black & White) with premium typography and micro-animations.
+- **Design System**: Strict monochrome (Black & White) with a film-amber accent (`#C8A97E`).
+- **Typography**: `Cormorant Garamond` (Serif/Display) and `Syne` (Sans/UI).
+- **Icons**: Phosphor Icons (via `lucide-react` or SVG).
+- **Form Capture**: Client-side logic ready for Google Forms POST integration.
 
 ---
 
 ## Completed Features
 
-### 1. Global Design System
-- **Strict Monochrome Theme**: Implemented a global CSS variables-based theme for a sharp, enterprise-grade look.
-- **Responsive Layout**: Sticky headers, blurred backdrop navigation, and structured footers.
+### 1. High-Fidelity Landing Page
+- **Refined Hero Section**: Balanced typography with a focused problem statement and primary CTA.
+- **Problem & Solution**: Narrative sections addressing the "WhatsApp casting" gap in East Africa.
+- **Dual-Sided Value Props**: Separate panels detailing the benefits for Talent and Directors.
+- **Market Stats**: Visualized data points on the regional creative economy to build credibility.
+- **How It Works**: A minimalist 3-step guide to the future platform workflow.
 
-### 2. Main Hero & Landing Page
-- **Impactful Hero Section**: Large, bold typography with high-contrast call-to-action buttons.
-- **Status Marquee**: A dynamic section showcasing platform stats (e.g., Active Castings, Verified Actors).
-- **Value Proposition**: Dedicated sections for Directors and Talent.
-
-### 3. Active Castings Directory
-- **Filterable Grid**: A dedicated `/castings` page with a sidebar for role type and location filtering.
-- **Casting Cards**: Hover-responsive cards with clear role details, location, and payment status.
-- **Mock Data Integration**: Pre-populated with representative casting calls for the East African market.
-
-### 4. Talent Roster & Profiles
-- **Talent Discovery**: A `/talent` page listing professional profiles in a modern grid.
-- **Individual Profile Pages**: Detailed `/talent/[id]` views featuring:
-  - Masonry-style headshot galleries.
-  - Physical attributes (Height, Build, Skills).
-  - Showreel/Video integration placeholders.
-  - Contact/Agent interaction buttons.
+### 2. Waitlist System
+- **Interactive Form Box**: Simplified UI with a "Spot Available" placeholder that transitions to a success state.
+- **Dynamic Feedback**: Scale and fade animations for the "You're on the list" confirmation message.
+- **Zero-Backend Logic**: Built to submit directly to Google Forms entry points.
 
 ---
 
-## Next Steps
+## Next Steps (Post-Funding)
 
-### 1. Backend Integration
-- Replace current `mockData` constants in the frontend components with API calls to the NestJS backend.
-- Finish the Prisma schema design to align with the dual-sided market (Talent vs. Producers).
+### 1. Platform Infrastructure
+- Initialize the NestJS backend monorepo.
+- Configure PostgreSQL/Prisma for talent and casting schemas.
 
-### 2. Authentication
-- Implement NextAuth.js (Auth.js) flows for secure user registration and login.
-- Define role-based access control (RBAC) for "Talent" and "Producer" user types.
+### 2. Authentication & Profiles
+- Implement Auth.js for secure onboarding.
+- Build the profile builder for talent to upload headshots and showreels.
 
-### 3. Media Uploads
-- Configure Cloudflare R2 or AWS S3 for hosting high-resolution headshots and showreels.
+### 3. Casting Directory
+- Transition the static landing page components into dynamic dashboards.
 
 ---
 
 ## Development Commands
 
-### Start Frontend
+### Start Landing Page
 ```bash
 cd frontend
 npm run dev
 ```
 
-### Start Backend
-```bash
-cd backend
-npm run start:dev
-```
-
 ---
 
-*Handed off with ❤️ by the development team.*
+*Handed off with ❤️ for the East African Creative Scene.*
