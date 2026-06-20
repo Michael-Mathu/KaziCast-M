@@ -11,7 +11,11 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+
+  // Validate callbackUrl to prevent open redirect attacks
+  const rawCallbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+  const VALID_REDIRECTS = ["/dashboard", "/dashboard/profile", "/dashboard/castings", "/dashboard/applications", "/dashboard/consent"];
+  const callbackUrl = VALID_REDIRECTS.includes(rawCallbackUrl) ? rawCallbackUrl : "/dashboard";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

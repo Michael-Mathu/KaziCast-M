@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { z } from "zod";
 
 const schema = z.object({
@@ -17,7 +17,8 @@ export async function POST(req: NextRequest) {
 
     const existing = await prisma.user.findUnique({ where: { email } });
     if (existing) {
-      return NextResponse.json({ error: "Email already registered." }, { status: 409 });
+      // Return generic success to prevent email enumeration
+      return NextResponse.json({ success: true }, { status: 201 });
     }
 
     const passwordHash = await bcrypt.hash(password, 12);
