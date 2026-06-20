@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String   @default("TALENT")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  profile      TalentProfile?
+  castings     Casting[]
+  applications Application[]
+}
+
+model TalentProfile {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  stageName      String?
+  bio            String?
+  headshotUrl    String?
+  location       String?
+  gender         String?
+  ageRange       String?
+  skills         String   @default("[]")
+  previousWorks  String?
+  portfolioUrls  String?
+
+  verified       Boolean  @default(false)
+  consents       ConsentRecord[]
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model ConsentRecord {
+  id        String   @id @default(uuid())
+  profileId String
+  profile   TalentProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  type      String
+  description String
+  grantedTo String?
+  status    String  @default("ACTIVE")
+
+  createdAt DateTime @default(now())
+  revokedAt DateTime?
+}
+
+model Casting {
+  id             String   @id @default(uuid())
+  directorId     String
+  director       User     @relation(fields: [directorId], references: [id])
+
+  title          String
+  description    String
+  roleType       String
+  gender         String?
+  ageRange       String?
+  location       String
+  productionType String
+  rate           String
+  rateAmount     String?
+
+  deadline       DateTime
+  status         String  @default("OPEN")
+  applications   Application[]
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Application {
+  id        String   @id @default(uuid())
+  castingId String
+  casting   Casting  @relation(fields: [castingId], references: [id], onDelete: Cascade)
+  talentId  String
+  talent    User     @relation(fields: [talentId], references: [id])
+
+  message   String?
+  status    String  @default("PENDING")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([castingId, talentId])
+}

@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-sans); /* Fallback serif to sans for simplicity if any component still hardcodes font-serif */
+
+  /* ── Core palette (Google Labs) ── */
+  --color-base: #F8F9FA;
+  --color-surface: #FFFFFF;
+  --color-surface-variant: #F8F9FA;
+  
+  --color-text-main: #202124;
+  --color-text-muted: #5F6368;
+  --color-border: #DADCE0;
+  
+  --color-accent: #1A73E8;
+  --color-accent-hover: #1557B0;
+  --color-accent-blue: #1A73E8; /* mapping old var to primary */
+
+  /* ponytail: keeping legacy names mapped to new equivalents to prevent breakages */
+  --color-near-black: #202124;
+  --color-warm-white: #FFFFFF;
+  --color-muted: #5F6368;
+
+  /* ── Semantic ── */
+  --color-success: #1E8E3E;
+  --color-warning: #F9AB00;
+  --color-danger: #D93025;
+
+  /* ── Glass (Deprecated, mapped to flat) ── */
+  --color-glass-border: #DADCE0;
+  --color-glass-bg: #FFFFFF;
+  --color-glass-bg-hover: #F8F9FA;
+}
+
+:root {
+  --background: #F8F9FA;
+  --foreground: #202124;
+}
+
+.dark {
+  --color-base: #121212;
+  --color-surface: #1E1E1E;
+  --color-surface-variant: #121212;
+  
+  --color-text-main: #E8EAED;
+  --color-text-muted: #9AA0A6;
+  --color-border: #3C4043;
+  
+  --background: #121212;
+  --foreground: #E8EAED;
+}
+
+/* ── Global base ── */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-text-main);
+  }
+
+  /* Smooth focus rings everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: rgba(26, 115, 232, 0.2);
+    color: var(--color-text-main);
+  }
+}
+
+/* ── Utility: Cards ── */
+@layer components {
+  /* Renamed from glass-card but keeping the class for now, just changing its behavior */
+  .glass-card, .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .glass-card:hover, .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-accent);
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+
+  .btn-primary:active {
+    box-shadow: none;
+    transform: translateY(1px);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--color-text-main);
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-outline:hover {
+    background: var(--color-surface-variant);
+    border-color: #BDC1C6;
+  }
+
+  /* ── Input fields ── */
+  .input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text-main);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+  }
+
+  .input-field::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: inset 0 0 0 1px var(--color-accent);
+  }
+
+  /* ── Badges / Pills ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 4px;
+    background: var(--color-surface-variant);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+  }
+
+  .badge-accent {
+    background: #E8F0FE;
+    color: var(--color-accent);
+    border-color: #D2E3FC;
+  }
+
+  .badge-success {
+    background: #E6F4EA;
+    color: var(--color-success);
+    border-color: #CEEAD6;
+  }
+
+  .badge-warning {
+    background: #FEF7E0;
+    color: var(--color-warning);
+    border-color: #FEEFC3;
+  }
+
+  .badge-danger {
+    background: #FCE8E6;
+    color: var(--color-danger);
+    border-color: #FAD2CF;
+  }
+}
+
+/* ── Keyframe Animations (Simplified for Google Labs) ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Gradients removed for Labs aesthetic, mapping classes to flat primary */
+.text-gradient-gold, .text-gradient-blue {
+  color: var(--color-accent);
+}
+
+.ambient-grid {
+  display: none; /* No grids in Labs */
+}
